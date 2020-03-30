@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using SeriesChallenge.Views;
 
 namespace SeriesChallenge
 {
@@ -16,6 +17,12 @@ namespace SeriesChallenge
         public MainPage()
         {
             InitializeComponent();
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            QuestPage nuevapagina = new QuestPage();
+            await Navigation.PushAsync(nuevapagina);
         }
     }
 }

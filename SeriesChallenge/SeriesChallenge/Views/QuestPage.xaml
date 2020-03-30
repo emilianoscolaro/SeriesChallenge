@@ -5,9 +5,61 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="SeriesChallenge.Views.QuestPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="LabelKey" >
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style TargetType="Frame" x:Key="FrameKey">
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="Padding" Value="13"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
+        
+        <StackLayout  Spacing="40" Padding="20">
+
+
+                <Label Text="¿De que serie son estos personajes?" TextColor="Black" FontSize="20" HorizontalOptions="CenterAndExpand"
+                   FontAttributes="Bold"/>
+
+
+
+            <StackLayout  Padding="20">
+                <Frame Style="{StaticResource Key=FrameKey}">
+                    <Label Text="{Binding ChA }" Style="{StaticResource Key=LabelKey}" />
+                </Frame>
+                <Frame Style="{StaticResource Key=FrameKey}" IsVisible="{Binding CBVis}">
+                    <Label Text="{Binding ChB }" Style="{StaticResource Key=LabelKey}"
+                           />
+                </Frame>
+                <Frame Style="{StaticResource Key=FrameKey}" IsVisible="{Binding CCVis}" >
+                    <Label Text="{Binding ChC }" Style="{StaticResource Key=LabelKey}"
+                          />
+                </Frame>
+                <Frame Style="{StaticResource Key=FrameKey}" IsVisible="{Binding CDVis}">
+                    <Label Text="{Binding ChD }" Style="{StaticResource Key=LabelKey}"
+                           />
+                </Frame>
+                <Frame Style="{StaticResource Key=FrameKey}" IsVisible="{Binding CEVis}">
+                    <Label Text="{Binding ChE }" Style="{StaticResource Key=LabelKey}"
+                          />
+                </Frame>
+                <Frame Style="{StaticResource Key=FrameKey}" BackgroundColor="#3FBCA3" >
+                    <Button Text="siguiente personaje" BackgroundColor="#3FBCA3" TextColor="White" Command="{Binding SiguienteBtn}" />
+                </Frame>
+
+            </StackLayout>
+
             
+            <Label Text="Respuesta" Style="{StaticResource Key=LabelKey}"/>
+            <Entry/>
+
 
         </StackLayout>
     </ContentPage.Content>

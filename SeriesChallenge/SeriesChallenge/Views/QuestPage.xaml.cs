@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SeriesChallenge.MVVM;
 
 namespace SeriesChallenge.Views
 {
@@ -15,6 +16,7 @@ namespace SeriesChallenge.Views
         public QuestPage()
         {
             InitializeComponent();
+            BindingContext = new QuestPageModelView();
         }
     }
 }

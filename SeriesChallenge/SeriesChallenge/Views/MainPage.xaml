@@ -5,12 +5,25 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="SeriesChallenge.MainPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style TargetType="Label" x:Key="LabelKey" >
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style TargetType="Frame" x:Key="FrameKey">
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="HasShadow" Value="True"/>
+                <Setter Property="Padding" Value="13"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
     <StackLayout Orientation="Vertical" Padding="40" Spacing="20">
-        <Label Text="Series"/>
-        <Label Text="Movies"/>
-        <Label Text="Video Games"/>
-        
+        <Button Text="series" Clicked="Button_Clicked"/>
+
     </StackLayout>
 
 </ContentPage>
