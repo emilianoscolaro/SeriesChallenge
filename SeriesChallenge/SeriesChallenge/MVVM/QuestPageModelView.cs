@@ -13,10 +13,35 @@ namespace SeriesChallenge.MVVM
 
         public QuestPageModelView()
         {
-           seriealpha = dt.Friends(seriealpha);
+            seriealpha = dt.Friends(seriealpha);
             command = new Command(siguiente);
+            BtnVis = true;
 
         }
+
+
+        private string respuesta;
+
+        public string Respuesta
+        {
+            get { return respuesta; }
+            set { respuesta = value; OnPropertyChanged(); }
+        }
+
+
+        private void validacion(string answer,bool respuesta,bool hayerror)
+        {
+            if (answer == "Friends")
+            {
+                respuesta = true;
+            }
+            else
+            {
+                hayerror = true;
+            }
+
+        }
+
 
 
         Serie seriealpha;
@@ -24,17 +49,6 @@ namespace SeriesChallenge.MVVM
         int index = 1;
         DataStorge dt = new DataStorge();
         
-
-        
-
-
-        private string name;
-
-        public string Name
-        {
-            get { return seriealpha.Name; }
-            set { seriealpha.Name = value; }
-        }
 
         private string cha;
 
@@ -113,6 +127,14 @@ namespace SeriesChallenge.MVVM
         }
 
 
+        private bool btnvis;
+
+        public bool BtnVis
+        {
+            get { return btnvis;  }
+            set { btnvis = value; OnPropertyChanged(); }
+        }
+
 
         private Command command;
 
@@ -137,9 +159,10 @@ namespace SeriesChallenge.MVVM
             if (index == 3)
                 CDVis = true;
             if (index == 4)
+            {
                 CEVis = true;
-
-            
+                BtnVis = false;
+            }
         }
 
 

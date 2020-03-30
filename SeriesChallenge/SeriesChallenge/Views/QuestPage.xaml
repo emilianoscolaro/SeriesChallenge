@@ -4,12 +4,18 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SeriesChallenge.Views.QuestPage">
+             x:Class="SeriesChallenge.Views.QuestPage"
+             BackgroundImageSource="background">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label" x:Key="LabelKey" >
                 <Setter Property="FontSize" Value="15"/>
                 <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
+            <Style TargetType="Label" x:Key="LabelTitle" >
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
             <Style TargetType="Frame" x:Key="FrameKey">
@@ -21,13 +27,12 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
-        
-        <StackLayout  Spacing="40" Padding="20">
+        <StackLayout  Spacing="10" Padding="20">
 
-
-                <Label Text="¿De que serie son estos personajes?" TextColor="Black" FontSize="20" HorizontalOptions="CenterAndExpand"
-                   FontAttributes="Bold"/>
-
+            <StackLayout>
+                <Label Text="¿De que serie" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
+                <Label Text="son estos personajes?" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
 
 
             <StackLayout  Padding="20">
@@ -50,17 +55,50 @@
                     <Label Text="{Binding ChE }" Style="{StaticResource Key=LabelKey}"
                           />
                 </Frame>
-                <Frame Style="{StaticResource Key=FrameKey}" BackgroundColor="#3FBCA3" >
+                <Frame Style="{StaticResource Key=FrameKey}" BackgroundColor="#3FBCA3" IsVisible="{Binding BtnVis}">
                     <Button Text="siguiente personaje" BackgroundColor="#3FBCA3" TextColor="White" Command="{Binding SiguienteBtn}" />
                 </Frame>
 
             </StackLayout>
 
+            <StackLayout VerticalOptions="EndAndExpand">
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Puntos" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
+                        <Frame CornerRadius="20" HeightRequest="40" Padding="5"  >
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="coin"/>
+                                <Label Text="5" FontSize="20" TextColor="Black" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Intentos" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
+                        <Frame CornerRadius="20" HeightRequest="40" Padding="5"  >
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="x" HorizontalOptions="EndAndExpand" Scale="1.5"/>
+                                <Label Text="5" FontSize="20" TextColor="Black" FontAttributes="Bold" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Respuesta" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
+                    <Frame CornerRadius="20" BackgroundColor="#3FBCA3" BorderColor="White" Padding="1">
+                        <Entry   TextColor="White" FontAttributes="Bold" Text="{Binding Respuesta}"/>
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
             
-            <Label Text="Respuesta" Style="{StaticResource Key=LabelKey}"/>
-            <Entry/>
+
+
+
+
 
 
         </StackLayout>
+
+
     </ContentPage.Content>
 </ContentPage>

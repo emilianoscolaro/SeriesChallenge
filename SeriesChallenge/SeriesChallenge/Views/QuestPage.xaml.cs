@@ -17,6 +17,7 @@ namespace SeriesChallenge.Views
         {
             InitializeComponent();
             BindingContext = new QuestPageModelView();
+            NavigationPage.SetHasNavigationBar(this, false);
         }
     }
 }
