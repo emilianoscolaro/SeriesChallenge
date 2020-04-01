@@ -13,12 +13,16 @@ namespace SeriesChallenge.MVVM
 
         public QuestPageModelView()
         {
+            PrincipalFrame = true;
+            PrincipalDosFrame = true;
             siguienteserie();
             command = new Command(siguiente);
             btnrespuesta = new Command(validrespuesta);
             sigseriebtn = new Command(siguienteserie);
             BtnVis = true;
             RespuestaColor=Color.White;
+            Coins = 5;
+            Intentos = 3;
             OnPropertyChanged();
         }
 
@@ -36,10 +40,9 @@ namespace SeriesChallenge.MVVM
         }
 
 
-
+        int index;
         int serieindex = 0;
-        int sigbtnpress;
-        //Serie seriealpha;
+       
 
 
         DataStorge dt = new DataStorge();
@@ -151,6 +154,24 @@ namespace SeriesChallenge.MVVM
         }
 
 
+
+        private bool principalframe;
+
+        public bool PrincipalFrame
+        {
+            get { return principalframe; }
+            set { principalframe = value;OnPropertyChanged(); }
+        }
+
+        private bool principaldosframe;
+
+        public bool PrincipalDosFrame
+        {
+            get { return principaldosframe; }
+            set { principaldosframe = value; OnPropertyChanged(); }
+        }
+
+
         private bool winframe;
 
         public bool WinFrame
@@ -159,6 +180,21 @@ namespace SeriesChallenge.MVVM
             set { winframe = value; OnPropertyChanged(); }
         }
 
+        private bool loseframe;
+
+        public bool LoseFrame
+        {
+            get { return loseframe; }
+            set { loseframe = value; OnPropertyChanged(); }
+        }
+
+        private bool resultadoframe;
+
+        public bool ResultdoFrame
+        {
+            get { return resultadoframe; }
+            set { resultadoframe = value; OnPropertyChanged(); }
+        }
 
 
         private Command btnrespuesta;
@@ -188,17 +224,63 @@ namespace SeriesChallenge.MVVM
 
 
 
+        private int coins;
+
+        public int Coins
+        {
+            get { return coins; }
+            set { coins = value; OnPropertyChanged(); }
+        }
+
+        private int coinstotales;
+
+        public int CoinsTotales
+        {
+            get { return coinstotales; }
+            set { coinstotales = value; OnPropertyChanged(); }
+        }
+
+
+
+        private int intentis;
+
+        public int Intentos
+        {
+            get { return intentis;  }
+            set { intentis = value; OnPropertyChanged(); }
+        }
+
+        private string textresultado;
+
+        public string TextResultado
+        {
+            get { return textresultado; }
+            set { textresultado = value; }
+        }
+
+
 
 
         private void siguienteserie()
         {
             
-            if (serieindex == 0)
+            if (serieindex == 6)
                 SerieAlpha = dt.Friends(SerieAlpha);
             if (serieindex == 1)
                 SerieAlpha = dt.Got(SerieAlpha);
+            if (serieindex == 2)
+                SerieAlpha = dt.TWD(SerieAlpha);
+            if (serieindex == 3)
+                SerieAlpha = dt.TheBigBangTheory(SerieAlpha);
+            if (serieindex == 4)
+                SerieAlpha = dt.MrRobot(SerieAlpha);
+            if (serieindex == 5)
+                SerieAlpha = dt.StrangerThings(SerieAlpha);
+            if (serieindex == 0)
+                SerieAlpha = dt.LaCasaDePapel(SerieAlpha);
             serieindex = serieindex + 1;
             WinFrame = false;
+            LoseFrame = false;
             CBVis = false;
             CCVis = false;
             CDVis = false;
@@ -207,15 +289,28 @@ namespace SeriesChallenge.MVVM
             RespuestaColor = Color.White;
             if (BtnVis == false)
                 BtnVis = true;
+            index = 0;
+            Intentos = 3;
+            Coins = 5;
+            PrincipalFrame = true;
+            PrincipalDosFrame = true;
             OnPropertyChanged(cha);
+            OnPropertyChanged(chb);
+            OnPropertyChanged(chc);
+            OnPropertyChanged(chd);
+            OnPropertyChanged(che);
+            OnPropertyChanged(Name);
+
         }
+
+        
+
 
 
         public void siguiente()
         {
 
-            sigbtnpress = sigbtnpress+ 1;
-            int index = sigbtnpress;
+            index = index +1;
 
             if (index == 1)
                 CBVis = true;
@@ -228,6 +323,9 @@ namespace SeriesChallenge.MVVM
                 CEVis = true;
                 BtnVis = false;
             }
+
+            Coins = Coins - 1;
+
         }
 
 
@@ -236,12 +334,27 @@ namespace SeriesChallenge.MVVM
             if(respuesta == seriealpha.Name)
             {
                 RespuestaColor = Color.FromHex("3FBCA3");
+                PrincipalFrame = false;
+                PrincipalDosFrame = false;
                 WinFrame = true;
+                CoinsTotales = CoinsTotales + Coins;
             }
             else
             {
                 RespuestaColor = Color.Red;
+                Intentos = Intentos - 1;
             }
+
+            if (Intentos == 0)
+            {
+                RespuestaColor = Color.Black;
+                PrincipalFrame = false;
+                PrincipalDosFrame = false;
+                LoseFrame = true;
+                Coins = 0;
+            }
+
+
         }
 
 
