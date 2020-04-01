@@ -18,6 +18,11 @@
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
+            <Style TargetType="Label" x:Key="LabelWin" >
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
             <Style TargetType="Frame" x:Key="FrameKey">
                 <Setter Property="BorderColor" Value="Black"/>
                 <Setter Property="CornerRadius" Value="10"/>
@@ -28,18 +33,41 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout  Spacing="10" Padding="20">
+            <StackLayout Spacing="160" IsVisible="{Binding WinFrame}">
+                <StackLayout/>
+                <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="20">
+                    <StackLayout Orientation="Vertical">
+                        <Label Text="¡Bien hecho!" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand"/>
+                        <Label Text="¡¡GANASTE!!" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="coin" Scale=".7"/>
+                            <Label Text="5" Style="{StaticResource Key=LabelWin}" VerticalOptions="CenterAndExpand"/>
+                            <Label Text=" Monedas" Style="{StaticResource Key=LabelWin}" FontSize="30" VerticalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Tienes" Style="{StaticResource Key=LabelWin}" FontSize="30" HorizontalOptions="EndAndExpand" />
+                            <BoxView BackgroundColor="Black" WidthRequest="3"/>
+                            <Label Text="10" Style="{StaticResource Key=LabelWin}" FontSize="30" HorizontalOptions="StartAndExpand" />
+                        </StackLayout>
+                        <Button Text="siguiente serie" FontAttributes="Bold" FontSize="30" BackgroundColor="#3FBCA3" 
+                                TextColor="White" CornerRadius="20" Command="{Binding SigSerieBtn}"/>
+                    </StackLayout>
+                </Frame>
+                <StackLayout/>
+            </StackLayout>
+
 
             <StackLayout>
-                <Label Text="¿De que serie" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
-                <Label Text="son estos personajes?" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
+                <Label Text="¿A que serie pertenecen" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
+                <Label Text=" estos personajes?" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
             </StackLayout>
 
 
             <StackLayout  Padding="20">
-                <Frame Style="{StaticResource Key=FrameKey}">
+                <Frame Style="{StaticResource Key=FrameKey}" >
                     <Label Text="{Binding ChA }" Style="{StaticResource Key=LabelKey}" />
                 </Frame>
-                <Frame Style="{StaticResource Key=FrameKey}" IsVisible="{Binding CBVis}">
+                <Frame Style="{StaticResource Key=FrameKey}" IsVisible="{Binding CBVis}" x:Name="FrameB">
                     <Label Text="{Binding ChB }" Style="{StaticResource Key=LabelKey}"
                            />
                 </Frame>
@@ -55,16 +83,16 @@
                     <Label Text="{Binding ChE }" Style="{StaticResource Key=LabelKey}"
                           />
                 </Frame>
-                <Frame Style="{StaticResource Key=FrameKey}" BackgroundColor="#3FBCA3" IsVisible="{Binding BtnVis}">
-                    <Button Text="siguiente personaje" BackgroundColor="#3FBCA3" TextColor="White" Command="{Binding SiguienteBtn}" />
+                <Frame x:Name="BtnSiguiente" Style="{StaticResource Key=FrameKey}" BackgroundColor="#3FBCA3" IsVisible="{Binding BtnVis}">
+                    <Button  Text="siguiente personaje" BackgroundColor="#3FBCA3" TextColor="White" Command="{Binding SiguienteBtn}" FontSize="20" FontAttributes="Bold" />
                 </Frame>
 
             </StackLayout>
 
             <StackLayout VerticalOptions="EndAndExpand">
-                <StackLayout Orientation="Horizontal">
+                <StackLayout Orientation="Horizontal" VerticalOptions="StartAndExpand">
                     <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                        <Label Text="Puntos" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
+                        <Label Text="Monedas" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
                         <Frame CornerRadius="20" HeightRequest="40" Padding="5"  >
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="coin"/>
@@ -84,10 +112,11 @@
                 </StackLayout>
 
                 <StackLayout Orientation="Vertical">
-                    <Label Text="Respuesta" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
-                    <Frame CornerRadius="20" BackgroundColor="#3FBCA3" BorderColor="White" Padding="1">
-                        <Entry   TextColor="White" FontAttributes="Bold" Text="{Binding Respuesta}"/>
+                    <Frame CornerRadius="20" BackgroundColor="{Binding RespuestaColor}" BorderColor="White" Padding="3">
+                        <Entry   TextColor="Black" FontAttributes="Bold" Text="{Binding Respuesta}" ClearButtonVisibility="WhileEditing" Keyboard="Chat"/>
                     </Frame>
+                    <Button  Text="responder" BackgroundColor="#3FBCA3" TextColor="White" FontSize="20" FontAttributes="Bold" CornerRadius="10"
+                             Command="{Binding BtnRespuesta}"/>
                 </StackLayout>
             </StackLayout>
             

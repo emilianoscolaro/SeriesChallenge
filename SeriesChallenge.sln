@@ -7,7 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriesChallenge.Android", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriesChallenge.iOS", "SeriesChallenge\SeriesChallenge.iOS\SeriesChallenge.iOS.csproj", "{911EF488-E8CD-4591-A3AD-A7CDCAC550A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeriesChallenge", "SeriesChallenge\SeriesChallenge\SeriesChallenge.csproj", "{8FC43F51-367D-40E0-A364-4BE44688480C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeriesChallenge", "SeriesChallenge\SeriesChallenge\SeriesChallenge.csproj", "{8FC43F51-367D-40E0-A364-4BE44688480C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{17D31BF5-7F8F-456A-8A48-B2311538C893}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

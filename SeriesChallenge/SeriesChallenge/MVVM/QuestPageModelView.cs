@@ -13,11 +13,18 @@ namespace SeriesChallenge.MVVM
 
         public QuestPageModelView()
         {
-            seriealpha = dt.Friends(seriealpha);
+            siguienteserie();
             command = new Command(siguiente);
+            btnrespuesta = new Command(validrespuesta);
+            sigseriebtn = new Command(siguienteserie);
             BtnVis = true;
-
+            RespuestaColor=Color.White;
+            OnPropertyChanged();
         }
+
+
+
+
 
 
         private string respuesta;
@@ -29,33 +36,41 @@ namespace SeriesChallenge.MVVM
         }
 
 
-        private void validacion(string answer,bool respuesta,bool hayerror)
-        {
-            if (answer == "Friends")
-            {
-                respuesta = true;
-            }
-            else
-            {
-                hayerror = true;
-            }
 
+        int serieindex = 0;
+        int sigbtnpress;
+        //Serie seriealpha;
+
+
+        DataStorge dt = new DataStorge();
+
+
+
+        private Serie seriealpha;
+
+        public Serie SerieAlpha
+        {
+            get { return seriealpha; }
+            set { seriealpha = value; OnPropertyChanged(); }
         }
 
 
+        private string name;
 
-        Serie seriealpha;
+        public string Name
+        {
+            get { return seriealpha.Name; }
+            set { seriealpha.Name = value; OnPropertyChanged(); }
+        }
 
-        int index = 1;
-        DataStorge dt = new DataStorge();
-        
+
 
         private string cha;
 
         public string ChA
         {
             get { return seriealpha.CharacterA; }
-            set { seriealpha.CharacterA = value; }
+            set { seriealpha.CharacterA = value; OnPropertyChanged(); }
         }
 
         private string chb;
@@ -63,7 +78,7 @@ namespace SeriesChallenge.MVVM
         public string ChB
         {
             get { return seriealpha.CharacterB; }
-            set { seriealpha.CharacterB = value; }
+            set { seriealpha.CharacterB = value; OnPropertyChanged(); }
         }
 
 
@@ -72,7 +87,7 @@ namespace SeriesChallenge.MVVM
         public string ChC
         {
             get { return seriealpha.CharacterC; }
-            set { seriealpha.CharacterC = value; }
+            set { seriealpha.CharacterC = value; OnPropertyChanged(); }
         }
 
 
@@ -81,7 +96,7 @@ namespace SeriesChallenge.MVVM
         public string ChD
         {
             get { return seriealpha.CharacterD; }
-            set { seriealpha.CharacterD = value; }
+            set { seriealpha.CharacterD = value; OnPropertyChanged(); }
         }
 
         private string che;
@@ -89,7 +104,7 @@ namespace SeriesChallenge.MVVM
         public string ChE
         {
             get { return seriealpha.CharacterE; }
-            set { seriealpha.CharacterE = value; }
+            set { seriealpha.CharacterE = value; OnPropertyChanged(); }
         }
 
 
@@ -136,6 +151,25 @@ namespace SeriesChallenge.MVVM
         }
 
 
+        private bool winframe;
+
+        public bool WinFrame
+        {
+            get { return winframe; }
+            set { winframe = value; OnPropertyChanged(); }
+        }
+
+
+
+        private Command btnrespuesta;
+
+        public Command BtnRespuesta
+        {
+            get { return btnrespuesta; }
+            set { btnrespuesta = value; }
+        }
+
+
         private Command command;
 
         public Command SiguienteBtn
@@ -144,7 +178,38 @@ namespace SeriesChallenge.MVVM
             set { command = value; }
         }
 
-        int sigbtnpress;
+        private Command sigseriebtn;
+
+        public Command SigSerieBtn
+        {
+            get { return sigseriebtn; }
+            set { sigseriebtn = value; }
+        }
+
+
+
+
+
+        private void siguienteserie()
+        {
+            
+            if (serieindex == 0)
+                SerieAlpha = dt.Friends(SerieAlpha);
+            if (serieindex == 1)
+                SerieAlpha = dt.Got(SerieAlpha);
+            serieindex = serieindex + 1;
+            WinFrame = false;
+            CBVis = false;
+            CCVis = false;
+            CDVis = false;
+            CEVis = false;
+            Respuesta = "";
+            RespuestaColor = Color.White;
+            if (BtnVis == false)
+                BtnVis = true;
+            OnPropertyChanged(cha);
+        }
+
 
         public void siguiente()
         {
@@ -166,6 +231,30 @@ namespace SeriesChallenge.MVVM
         }
 
 
+        private void validrespuesta()
+        {
+            if(respuesta == seriealpha.Name)
+            {
+                RespuestaColor = Color.FromHex("3FBCA3");
+                WinFrame = true;
+            }
+            else
+            {
+                RespuestaColor = Color.Red;
+            }
+        }
+
+
+        private Color respuestacolor;
+
+        public Color RespuestaColor
+        {
+            get { return respuestacolor; }
+            set { respuestacolor = value; OnPropertyChanged();
+            }
+        }
+
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -177,6 +266,9 @@ namespace SeriesChallenge.MVVM
             }
 
         }
+
+
+
 
     }
 }

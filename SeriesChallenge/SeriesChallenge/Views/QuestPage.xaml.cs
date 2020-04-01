@@ -7,11 +7,13 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SeriesChallenge.MVVM;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace SeriesChallenge.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class QuestPage : ContentPage
+    public partial class QuestPage : ContentPage 
     {
         public QuestPage()
         {
@@ -19,5 +21,9 @@ namespace SeriesChallenge.Views
             BindingContext = new QuestPageModelView();
             NavigationPage.SetHasNavigationBar(this, false);
         }
+
+
+
+
     }
 }

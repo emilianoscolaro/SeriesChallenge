@@ -46,11 +46,13 @@ namespace SeriesChallenge.Models
 
        }
 
-          //  if (index == 1)
-          //  {
-          //      Series.Add(new Serie { Name = "Game of thrones", Index = 2, CharacterA = "Gilly", CharacterB = "Robert", CharacterC = "Oberyn", CharacterD = "Sansa", CharacterE = "Hodor" });
-          //  }
 
+        public Serie Got(Serie serie)
+        {
+            serie = new Serie { Name = "Game of thrones", Index = 2, CharacterA = "Gilly", CharacterB = "Robert", CharacterC = "Oberyn", CharacterD = "Sansa", CharacterE = "Hodor" };
+
+            return serie;
+        }
 
 
 
