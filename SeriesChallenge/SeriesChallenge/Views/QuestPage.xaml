@@ -39,13 +39,16 @@
                 <StackLayout/>
                 <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="20">
                     <StackLayout Orientation="Vertical">
-                        <Label Text="¡Puntuacion final!" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand"/>
+                        <Label Text="{Binding Name}" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand" TextColor="{Binding ResultadoColor}" HorizontalTextAlignment="Center" MaxLines="2"/>
+                        <Label Text="¡Puntuacion final!" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
                         <Label Text="{Binding TextResultado}" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand" FontSize="20" MaxLines="2" HorizontalTextAlignment="Center"/>
                         <StackLayout Orientation="Horizontal">
                             <Image Source="coin" Scale=".7"/>
-                            <Label Text="{Binding CoinsTotales}" Style="{StaticResource Key=LabelWin}" FontSize="30" HorizontalOptions="StartAndExpand" />
+                            <Label Text="{Binding CoinsTotales}" Style="{StaticResource Key=LabelWin}" FontSize="30" VerticalOptions="CenterAndExpand" />
                             <Label Text="Monedas" Style="{StaticResource Key=LabelWin}" FontSize="30" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
                         </StackLayout>
+                        <Button Text="MENU PRINCIPAL" FontAttributes="Bold" FontSize="30" BackgroundColor="#3FBCA3" 
+                                TextColor="White" CornerRadius="20" Clicked="VolverBtn"/>
                     </StackLayout>
                 </Frame>
                 <StackLayout/>
@@ -166,7 +169,5 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
-
-
     </ContentPage.Content>
 </ContentPage>

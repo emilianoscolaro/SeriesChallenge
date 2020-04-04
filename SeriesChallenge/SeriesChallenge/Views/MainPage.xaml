@@ -4,7 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="SeriesChallenge.MainPage">
+             x:Class="SeriesChallenge.MainPage"
+             BackgroundImageSource="background">
     <ContentPage.Resources>
         <ResourceDictionary>
             <Style TargetType="Label" x:Key="LabelKey" >
@@ -18,11 +19,41 @@
                 <Setter Property="HasShadow" Value="True"/>
                 <Setter Property="Padding" Value="13"/>
             </Style>
+            <Style TargetType="Button" x:Key="Btnkey">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="25"/>
+                <Setter Property="BorderColor" Value="White"/>
+                <Setter Property="BorderWidth" Value="4"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="HeightRequest" Value="80"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <StackLayout Orientation="Vertical" Padding="40" Spacing="20">
-        <Button Text="series" Clicked="Button_Clicked"/>
+    <StackLayout  >
+        <StackLayout Orientation="Vertical" Padding="40" Spacing="20" VerticalOptions="CenterAndExpand" x:Name="PrincipalMenu" >
+            <Button x:Name="SerieBtn" Text="series" Clicked="Button_Clicked" Style="{StaticResource Key=Btnkey}"/>
+            <Button Text="peliculas"  Style="{StaticResource Key=Btnkey}"/>
+            <Button Text="como jugar"  Style="{StaticResource Key=Btnkey}" x:Name="Comojugar" Clicked="Comojugar_Clicked"/>
+        </StackLayout>
+        <StackLayout VerticalOptions="CenterAndExpand" x:Name="ComoJugarTxt" IsVisible="False" >
+            <Frame BorderColor="White" BackgroundColor="Transparent" CornerRadius="15" Padding="15">
+                <Frame BorderColor="White" BackgroundColor="Transparent" CornerRadius="15">
+                    <StackLayout Spacing="20">
+                        <Label Text="El juego consiste en adivinar el nombre de la serie segun los personajes mostrados.Si con un personaje no logras adivinar el nombre puedes pedir otro personaje.Mientras mas personajes menos monedas obtendras al adivinar la serie.Tienes un total de 3 intentos cuando estos lleguen a 0 perderas y seguiras con la siguiente serie. "
+                               TextColor="White" FontSize="25" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                            <Button Text="X" BorderColor="White" BackgroundColor="Transparent" TextColor="White" BorderWidth="5"
+                                WidthRequest="60" FontSize="25" Clicked="Button_Clicked_1"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+            </Frame>
+        </StackLayout>
+        
+
 
     </StackLayout>
 

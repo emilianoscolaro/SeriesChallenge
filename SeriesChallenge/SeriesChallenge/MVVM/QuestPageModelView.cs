@@ -66,6 +66,13 @@ namespace SeriesChallenge.MVVM
             set { seriealpha.Name = value; OnPropertyChanged(); }
         }
 
+        private string namedos;
+
+        public string NameDos
+        {
+            get { return seriealpha.NameDos; }
+            set { seriealpha.NameDos = value; OnPropertyChanged(); }
+        }
 
 
         private string cha;
@@ -255,7 +262,7 @@ namespace SeriesChallenge.MVVM
         public string TextResultado
         {
             get { return textresultado; }
-            set { textresultado = value; }
+            set { textresultado = value;OnPropertyChanged(); }
         }
 
 
@@ -264,7 +271,7 @@ namespace SeriesChallenge.MVVM
         private void siguienteserie()
         {
             
-            if (serieindex == 6)
+            if (serieindex == 0)
                 SerieAlpha = dt.Friends(SerieAlpha);
             if (serieindex == 1)
                 SerieAlpha = dt.Got(SerieAlpha);
@@ -276,7 +283,19 @@ namespace SeriesChallenge.MVVM
                 SerieAlpha = dt.MrRobot(SerieAlpha);
             if (serieindex == 5)
                 SerieAlpha = dt.StrangerThings(SerieAlpha);
-            if (serieindex == 0)
+            if (serieindex == 6)
+                SerieAlpha = dt.Vikingos(SerieAlpha);
+            if (serieindex == 7)
+                SerieAlpha = dt.Dark(SerieAlpha);
+            if (serieindex == 8)
+                SerieAlpha = dt.Lost(SerieAlpha);
+            if (serieindex == 9)
+                SerieAlpha = dt.PrisonBreak(SerieAlpha);
+            if (serieindex == 10)
+                SerieAlpha = dt.LosSimpsons(SerieAlpha);
+            if (serieindex == 11)
+                SerieAlpha = dt.Breakingbad(SerieAlpha);
+            if (serieindex == 12)
                 SerieAlpha = dt.LaCasaDePapel(SerieAlpha);
             serieindex = serieindex + 1;
             WinFrame = false;
@@ -323,7 +342,6 @@ namespace SeriesChallenge.MVVM
                 CEVis = true;
                 BtnVis = false;
             }
-
             Coins = Coins - 1;
 
         }
@@ -331,31 +349,66 @@ namespace SeriesChallenge.MVVM
 
         private void validrespuesta()
         {
-            if(respuesta == seriealpha.Name)
+            if(respuesta=="" || respuesta == null)
             {
-                RespuestaColor = Color.FromHex("3FBCA3");
-                PrincipalFrame = false;
-                PrincipalDosFrame = false;
-                WinFrame = true;
-                CoinsTotales = CoinsTotales + Coins;
+
             }
             else
             {
-                RespuestaColor = Color.Red;
-                Intentos = Intentos - 1;
+                if (respuesta == "La casa de papel" && respuesta == seriealpha.Name)
+                {
+                    RespuestaColor = Color.FromHex("3FBCA3");
+                    PrincipalFrame = false;
+                    PrincipalDosFrame = false;
+                    ResultdoFrame = true;
+                    ResultadoColor = Color.Green;
+                    CoinsTotales = CoinsTotales + Coins;
+                }
+                else
+                {
+                    if (respuesta == seriealpha.Name || respuesta == seriealpha.NameDos)
+                    {
+                        RespuestaColor = Color.FromHex("3FBCA3");
+                        PrincipalFrame = false;
+                        PrincipalDosFrame = false;
+                        WinFrame = true;
+                        CoinsTotales = CoinsTotales + Coins;
+                    }
+                    else
+                    {
+                        RespuestaColor = Color.Red;
+                        Intentos = Intentos - 1;
+                    }
+
+                    if (Intentos == 0 && serieindex == 7)
+                    {
+                        RespuestaColor = Color.Black;
+                        PrincipalFrame = false;
+                        PrincipalDosFrame = false;
+                        ResultdoFrame = true;
+                        ResultadoColor = Color.Red;
+                        Coins = 0;
+                    }
+                    else
+                    {
+                        if (Intentos == 0)
+                        {
+                            RespuestaColor = Color.Black;
+                            PrincipalFrame = false;
+                            PrincipalDosFrame = false;
+                            LoseFrame = true;
+                            Coins = 0;
+                        }
+                    }
+                }
             }
-
-            if (Intentos == 0)
-            {
-                RespuestaColor = Color.Black;
-                PrincipalFrame = false;
-                PrincipalDosFrame = false;
-                LoseFrame = true;
-                Coins = 0;
-            }
-
-
+            
+            
         }
+
+
+
+
 
 
         private Color respuestacolor;
@@ -366,6 +419,15 @@ namespace SeriesChallenge.MVVM
             set { respuestacolor = value; OnPropertyChanged();
             }
         }
+
+        private Color resultadocolor;
+
+        public Color ResultadoColor
+        {
+            get { return resultadocolor; }
+            set { resultadocolor = value;OnPropertyChanged(); }
+        }
+
 
 
 

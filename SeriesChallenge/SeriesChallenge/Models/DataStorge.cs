@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
@@ -25,7 +25,7 @@ namespace SeriesChallenge.Models
 
         public Serie Got(Serie serie)
         {
-            serie = new Serie { Name = "Game of thrones", Index = 2, CharacterA = "Gilly", CharacterB = "Robert", CharacterC = "Oberyn", CharacterD = "Sansa", CharacterE = "Hodor" };
+            serie = new Serie { Name = "Game of thrones",NameDos="Juego de tronos", Index = 2, CharacterA = "Gilly", CharacterB = "Robert", CharacterC = "Oberyn", CharacterD = "Sansa", CharacterE = "Hodor" };
 
             return serie;
         }
@@ -34,7 +34,7 @@ namespace SeriesChallenge.Models
 
         public Serie TheBigBangTheory(Serie serie)
         {
-            serie = new Serie { Name = "The big bang theory", Index = 3, CharacterA = "Stuart", CharacterB = "Bert", CharacterC = "Leonard", CharacterD = "Amy", CharacterE = "Sheldon" };
+            serie = new Serie { Name = "The big bang theory", NameDos="La teoria del big bang", CharacterA = "Stuart", CharacterB = "Bert", CharacterC = "Leonard", CharacterD = "Amy", CharacterE = "Sheldon" };
 
             return serie;
         }
@@ -75,7 +75,37 @@ namespace SeriesChallenge.Models
             return serie;
         }
 
+        public Serie Vikingos(Serie serie)
+        {
+            serie = new Serie { Name = "Vikings" ,NameDos= "Vikingos", CharacterA = "Rollo", CharacterB = "Floki", CharacterC = "Bjorn", CharacterD = "Lagertha", CharacterE = "Ragnar" };
 
+            return serie;
+        }
+
+        public Serie Dark(Serie serie)
+        {
+            serie = new Serie { Name = "Dark ", CharacterA = "Jonas", CharacterB = "Katharina", CharacterC = "Magnus ", CharacterD = "Charlotte", CharacterE = "Ulrich" };
+
+            return serie;
+        }
+        public Serie Lost(Serie serie)
+        {
+            serie = new Serie { Name = "Lost",NameDos= "Perdidos", CharacterA = "Hugo", CharacterB = "James", CharacterC = "Sun", CharacterD = "Kate", CharacterE = "Sayid" };
+
+            return serie;
+        }
+        public Serie PrisonBreak(Serie serie)
+        {
+            serie = new Serie { Name = "Prison Break", CharacterA = "Michael", CharacterB = "Sara", CharacterC = "Theodore 'T-Bag'", CharacterD = "Lincoln 'Linc'", CharacterE = "Fernando" };
+
+            return serie;
+        }
+        public Serie LosSimpsons(Serie serie)
+        {
+            serie = new Serie { Name = "Los Simpsons",NameDos ="The Simpsons", CharacterA = "Troy", CharacterB = "Selma", CharacterC = "Bob", CharacterD = "Homero", CharacterE = "Bart" };
+
+            return serie;
+        }
 
 
     }
