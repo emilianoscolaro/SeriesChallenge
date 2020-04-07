@@ -44,11 +44,11 @@
                         <Label Text="{Binding TextResultado}" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand" FontSize="20" MaxLines="2" HorizontalTextAlignment="Center"/>
                         <StackLayout Orientation="Horizontal">
                             <Image Source="coin" Scale=".7"/>
-                            <Label Text="{Binding CoinsTotales}" Style="{StaticResource Key=LabelWin}" FontSize="30" VerticalOptions="CenterAndExpand" />
+                            <Label x:Name="CoinsTotLabel" Text="{Binding CoinsTotales}" Style="{StaticResource Key=LabelWin}" FontSize="30" VerticalOptions="CenterAndExpand" />
                             <Label Text="Monedas" Style="{StaticResource Key=LabelWin}" FontSize="30" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" />
                         </StackLayout>
                         <Button Text="MENU PRINCIPAL" FontAttributes="Bold" FontSize="30" BackgroundColor="#3FBCA3" 
-                                TextColor="White" CornerRadius="20" Clicked="VolverBtn"/>
+                                TextColor="White" CornerRadius="20" Clicked="VolverBtn" />
                     </StackLayout>
                 </Frame>
                 <StackLayout/>
@@ -68,7 +68,7 @@
                             <Label Text="{Binding CoinsTotales}" Style="{StaticResource Key=LabelWin}" FontSize="30" HorizontalOptions="StartAndExpand" />
                             <Label Text="Monedas" Style="{StaticResource Key=LabelWin}" FontSize="30" HorizontalOptions="EndAndExpand" />
                         </StackLayout>
-                        <Button Text="siguiente serie" FontAttributes="Bold" FontSize="30" BackgroundColor="#3FBCA3" 
+                        <Button Text="siguiente" FontAttributes="Bold" FontSize="30" BackgroundColor="#3FBCA3" 
                                 TextColor="White" CornerRadius="20" Command="{Binding SigSerieBtn}"/>
                         <Button Text="abandonar" FontAttributes="Bold" FontSize="30" BackgroundColor="DarkRed" 
                                 TextColor="White" CornerRadius="20" Clicked="VolverBtn"/>
@@ -94,7 +94,7 @@
                             <BoxView BackgroundColor="Black" WidthRequest="3"/>
                             <Label Text="{Binding CoinsTotales}" Style="{StaticResource Key=LabelWin}" FontSize="30" HorizontalOptions="StartAndExpand" />
                         </StackLayout>
-                        <Button Text="siguiente serie" FontAttributes="Bold" FontSize="30" BackgroundColor="#3FBCA3" 
+                        <Button Text="siguiente" FontAttributes="Bold" FontSize="30" BackgroundColor="#3FBCA3" 
                                 TextColor="White" CornerRadius="20" Command="{Binding SigSerieBtn}"/>
                         <Button Text="abandonar" FontAttributes="Bold" FontSize="30" BackgroundColor="DarkRed" 
                                 TextColor="White" CornerRadius="20" Clicked="VolverBtn"/>
@@ -105,8 +105,7 @@
 
             <StackLayout IsVisible="{Binding PrincipalFrame}">
                 <StackLayout>
-                    <Label Text="¿A que serie pertenecen" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
-                    <Label Text=" estos personajes?" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="{Binding Encabezado}" Style="{StaticResource Key=LabelTitle}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
                 </StackLayout>
 
 

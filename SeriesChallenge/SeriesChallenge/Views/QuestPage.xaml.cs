@@ -15,12 +15,13 @@ namespace SeriesChallenge.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class QuestPage : ContentPage 
     {
-        public QuestPage()
+        public QuestPage(string nivel)
         {
             InitializeComponent();
-            BindingContext = new QuestPageModelView();
+            BindingContext = new QuestPageModelView(nivel);
             NavigationPage.SetHasNavigationBar(this, false);
         }
+
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
@@ -46,9 +47,11 @@ namespace SeriesChallenge.Views
 
         }
 
+        string coins;
+
         private async void VolverBtn(object sender, EventArgs e)
         {
-            await Navigation.PopToRootAsync();
+            await Navigation.PushAsync(new MainPage());
         }
     }
 }

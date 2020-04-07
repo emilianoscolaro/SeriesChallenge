@@ -13,6 +13,11 @@
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
             </Style>
+            <Style TargetType="Label" x:Key="LabelWin" >
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+            </Style>
             <Style TargetType="Frame" x:Key="FrameKey">
                 <Setter Property="BorderColor" Value="Black"/>
                 <Setter Property="CornerRadius" Value="10"/>
@@ -33,17 +38,32 @@
     </ContentPage.Resources>
 
     <StackLayout  >
-        <StackLayout Orientation="Vertical" Padding="40" Spacing="20" VerticalOptions="CenterAndExpand" x:Name="PrincipalMenu" >
-            <Button x:Name="SerieBtn" Text="series" Clicked="Button_Clicked" Style="{StaticResource Key=Btnkey}"/>
-            <Button Text="peliculas"  Style="{StaticResource Key=Btnkey}"/>
+        <StackLayout Orientation="Vertical" Padding="40" Spacing="20" VerticalOptions="CenterAndExpand" x:Name="PrincipalMenu">
+           
+            <Button x:Name="SerieBtn" Text="series" Clicked="Series" Style="{StaticResource Key=Btnkey}"/>
+            <StackLayout x:Name="SeriesLvl" Orientation="Vertical" Spacing="10" IsVisible="False">
+                <Button Text="nivel 1" Style="{StaticResource Btnkey}" WidthRequest="200" HorizontalOptions="EndAndExpand"
+                        Clicked="NivelUnoSerie" x:Name="SLvunoBtn" HeightRequest="60"/>
+                <Button Text="nivel 2" Style="{StaticResource Btnkey}" WidthRequest="200" HorizontalOptions="EndAndExpand"
+                        HeightRequest="60" Clicked="NivelDosSerie" x:Name="SLvdosBtn"/>
+            </StackLayout>
+            <Button Text="peliculas"  Style="{StaticResource Key=Btnkey}" x:Name="PeliculasBtn" Clicked="Peliculas"/>
+            <StackLayout x:Name="Peliculaslvl" Orientation="Vertical" Spacing="10" IsVisible="False">
+                <Button Text="nivel 1" Style="{StaticResource Btnkey}" WidthRequest="200" HorizontalOptions="EndAndExpand"
+                        Clicked="NivelUnoPeliculas" x:Name="PLvunoBtn" HeightRequest="60"/>
+                <Button Text="nivel 2" Style="{StaticResource Btnkey}" WidthRequest="200" HorizontalOptions="EndAndExpand"
+                        HeightRequest="60" Clicked="NivelDosPeliculas" x:Name="PLvdosBtn"/>
+            </StackLayout>
             <Button Text="como jugar"  Style="{StaticResource Key=Btnkey}" x:Name="Comojugar" Clicked="Comojugar_Clicked"/>
+            <Button Text="puntuacion" Style="{StaticResource Key=Btnkey}" x:Name="PuntuacionBtn" Clicked="Puntuacion_Clicked" IsVisible="False"/>
         </StackLayout>
+        
         <StackLayout VerticalOptions="CenterAndExpand" x:Name="ComoJugarTxt" IsVisible="False" >
             <Frame BorderColor="White" BackgroundColor="Transparent" CornerRadius="15" Padding="15">
                 <Frame BorderColor="White" BackgroundColor="Transparent" CornerRadius="15">
                     <StackLayout Spacing="20">
-                        <Label Text="El juego consiste en adivinar el nombre de la serie segun los personajes mostrados.Si con un personaje no logras adivinar el nombre puedes pedir otro personaje.Mientras mas personajes menos monedas obtendras al adivinar la serie.Tienes un total de 3 intentos cuando estos lleguen a 0 perderas y seguiras con la siguiente serie. "
-                               TextColor="White" FontSize="25" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
+                        <Label Text="El juego consiste en adivinar el nombre de la serie/pelicula segun los personajes mostrados.Si con un personaje no logras adivinar el nombre puedes pedir otro personaje.Mientras mas personajes menos monedas obtendras al adivinar la serie/pelicula.Tienes un total de 3 intentos,cuando estos lleguen a 0 perderas y seguiras con la siguiente serie/pelicula.La RESPUESTA solo tendra que tener Mayuscula en la primera letra (por mas que se trate de un nombre propio) y no debe haber espacios en el final ni acentos"
+                               TextColor="White" FontSize="20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
                             <Button Text="X" BorderColor="White" BackgroundColor="Transparent" TextColor="White" BorderWidth="5"
                                 WidthRequest="60" FontSize="25" Clicked="Button_Clicked_1"/>
@@ -52,7 +72,41 @@
                 </Frame>
             </Frame>
         </StackLayout>
-        
+
+        <StackLayout x:Name="Puntuacion" VerticalOptions="CenterAndExpand" Padding="10" IsVisible="False">
+            <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="20">
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Puntuacion" Style="{StaticResource Key=LabelWin}" HorizontalTextAlignment="Center"/>
+                    <BoxView BackgroundColor="Gray" HeightRequest=".9"/>
+                    <StackLayout Padding="15">
+                        <Label Text="Series" Style="{StaticResource Key=LabelWin}" HorizontalTextAlignment="Center" FontSize="30"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Nivel 1" Style="{StaticResource Key=LabelWin}" FontSize="30"/>
+                            <Label x:Name="NivunoScoins" Style="{StaticResource Key=LabelWin}" FontSize="30" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Nivel 2" Style="{StaticResource Key=LabelWin}" FontSize="30"/>
+                            <Label Text="Nivel 1" Style="{StaticResource Key=LabelWin}" FontSize="30" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                        <Label Text="Peliculas" Style="{StaticResource Key=LabelWin}" HorizontalTextAlignment="Center" FontSize="30"/>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Nivel 1" Style="{StaticResource Key=LabelWin}" FontSize="30"/>
+                            <Label Text="Nivel 1" Style="{StaticResource Key=LabelWin}" FontSize="30" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Nivel 2" Style="{StaticResource Key=LabelWin}" FontSize="30"/>
+                            <Label Text="Nivel 1" Style="{StaticResource Key=LabelWin}" FontSize="30" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                            <Button Text="X" BorderColor="Black" BackgroundColor="Transparent" TextColor="Black" BorderWidth="5"
+                                WidthRequest="60" FontSize="25" Clicked="Button_Clicked_1"/>
+                        </StackLayout>
+                    </StackLayout>
+
+                </StackLayout>
+
+            </Frame>
+        </StackLayout>
 
 
     </StackLayout>
