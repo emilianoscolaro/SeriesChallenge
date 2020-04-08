@@ -53,5 +53,11 @@ namespace SeriesChallenge.Views
         {
             await Navigation.PushAsync(new MainPage());
         }
+
+        private async void Paso_Clicked(object sender, EventArgs e)
+        {
+            LoseFrame.Scale = 0;
+            await LoseFrame.ScaleTo(1, 200);
+        }
     }
 }

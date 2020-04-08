@@ -41,7 +41,7 @@
                     <StackLayout Orientation="Vertical">
                         <Label Text="{Binding Name}" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand" TextColor="{Binding ResultadoColor}" HorizontalTextAlignment="Center" MaxLines="2"/>
                         <Label Text="¡Puntuacion final!" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center"/>
-                        <Label Text="{Binding TextResultado}" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand" FontSize="20" MaxLines="2" HorizontalTextAlignment="Center"/>
+                        <Label Text="Comparte el resultado con tus amigos para ver a quien lefue mejor" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand" FontSize="20" MaxLines="2" HorizontalTextAlignment="Center"/>
                         <StackLayout Orientation="Horizontal">
                             <Image Source="coin" Scale=".7"/>
                             <Label x:Name="CoinsTotLabel" Text="{Binding CoinsTotales}" Style="{StaticResource Key=LabelWin}" FontSize="30" VerticalOptions="CenterAndExpand" />
@@ -58,8 +58,8 @@
                 <StackLayout/>
                 <Frame BackgroundColor="White" BorderColor="Black" CornerRadius="20">
                     <StackLayout Orientation="Vertical">
-                        <Label Text="¡MAL MAL!" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand"/>
-                        <Label Text="Al parecer no sabes nada o esta  app esta mal" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand" FontSize="20" MaxLines="2" HorizontalTextAlignment="Center"/>
+                        <Label Text="¡UPS!" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand"/>
+                        <Label Text="¡No lo lograste! La siguiente será más fácil" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand" FontSize="20" MaxLines="2" HorizontalTextAlignment="Center"/>
                         <Label Text="La respuesta era:" Style="{StaticResource Key=LabelWin}" HorizontalOptions="CenterAndExpand" FontSize="25" />
                         <Label Text="{Binding Name}" HorizontalOptions="CenterAndExpand" Style="{StaticResource Key=LabelWin}" TextColor="Red" HorizontalTextAlignment="Center" MaxLines="2"/>
                         <StackLayout Orientation="Horizontal">
@@ -163,8 +163,14 @@
                     <Frame CornerRadius="20" BackgroundColor="{Binding RespuestaColor}" BorderColor="White" Padding="3" x:Name="RespuestaFrame">
                         <Entry   TextColor="Black" FontAttributes="Bold" Text="{Binding Respuesta}" ClearButtonVisibility="WhileEditing" Keyboard="Chat"/>
                     </Frame>
-                    <Button  Text="responder" BackgroundColor="#3FBCA3" TextColor="White" FontSize="20" FontAttributes="Bold" CornerRadius="10"
-                             Command="{Binding BtnRespuesta}"  Clicked="Button_Clicked_Respuesta"/>
+
+                    <StackLayout Orientation="Horizontal">
+                        <Button  Text="responder" BackgroundColor="#3FBCA3" TextColor="White" FontSize="20" FontAttributes="Bold" CornerRadius="10"
+                             Command="{Binding BtnRespuesta}"  Clicked="Button_Clicked_Respuesta" HorizontalOptions="FillAndExpand" />
+                        <Button Text="Paso" BackgroundColor="DarkRed" TextColor="White" FontSize="20" FontAttributes="Bold" CornerRadius="10"
+                             Command="{Binding BtnPaso}" HorizontalOptions="FillAndExpand" Clicked="Paso_Clicked"/>
+                    </StackLayout>
+
                 </StackLayout>
             </StackLayout>
         </StackLayout>

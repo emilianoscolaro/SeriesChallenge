@@ -268,7 +268,7 @@ namespace SeriesChallenge.Models
 
         public Serie Gladiator(Serie serie)
         {
-            serie = new Serie { Name = "Gladiator",NameDos="Gladiador", CharacterA = "Lucilla", CharacterB = "Lucilla", CharacterC = "	Maximus", CharacterD = "Proximo", CharacterE = "Marcus Aurelius" };
+            serie = new Serie { Name = "Gladiator",NameDos="Gladiador", CharacterA = "Lucilla", CharacterB = "Graco", CharacterC = "	Maximus", CharacterD = "Proximo", CharacterE = "Marcus Aurelius" };
 
             return serie;
         }

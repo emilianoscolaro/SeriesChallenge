@@ -62,7 +62,7 @@
             <Frame BorderColor="White" BackgroundColor="Transparent" CornerRadius="15" Padding="15">
                 <Frame BorderColor="White" BackgroundColor="Transparent" CornerRadius="15">
                     <StackLayout Spacing="20">
-                        <Label Text="El juego consiste en adivinar el nombre de la serie/pelicula segun los personajes mostrados.Si con un personaje no logras adivinar el nombre puedes pedir otro personaje.Mientras mas personajes menos monedas obtendras al adivinar la serie/pelicula.Tienes un total de 3 intentos,cuando estos lleguen a 0 perderas y seguiras con la siguiente serie/pelicula.La RESPUESTA solo tendra que tener Mayuscula en la primera letra (por mas que se trate de un nombre propio) y no debe haber espacios en el final ni acentos"
+                        <Label Text="El juego consiste en adivinar a qué serie o película pertenecen los personajes en las opciones. En caso de fracasar en el primer intento, podés solicitar una pista más presionando el botón (Siguiente Personaje). ¡Pero recordá! Cuantas más pistas, menor será tu puntuación en monedas. En total tendrás 3 intentos en cada adivinanza. Al llegar a 0, pasarás a la siguiente. Utiliza mayúsculas solo en la primera letra y evita acentos y  espacios al final. ¡A jugar!"
                                TextColor="White" FontSize="20" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" FontAttributes="Bold"/>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
                             <Button Text="X" BorderColor="White" BackgroundColor="Transparent" TextColor="White" BorderWidth="5"

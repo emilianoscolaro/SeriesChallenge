@@ -24,6 +24,7 @@ namespace SeriesChallenge.MVVM
             command = new Command(siguiente);
             btnrespuesta = new Command(validrespuesta);
             sigseriebtn = new Command(siguienteserie);
+            btnpaso = new Command(Paso);
             BtnVis = true;
             RespuestaColor=Color.White;
             Coins = 5;
@@ -253,6 +254,13 @@ namespace SeriesChallenge.MVVM
         }
 
 
+        private Command btnpaso;
+
+        public Command BtnPaso
+        {
+            get { return btnpaso; }
+            set { btnpaso = value; }
+        }
 
 
 
@@ -291,7 +299,33 @@ namespace SeriesChallenge.MVVM
         }
 
 
+        private void Paso()
+        {
 
+            if (SerieAlpha.Name == "La casa de papel" 
+                || SerieAlpha.Name == "Star trek" 
+                || SerieAlpha.Name == "Matrix" 
+                || SerieAlpha.Name == "Titanic")
+            {
+                coins = 0;
+                RespuestaColor = Color.FromHex("3FBCA3");
+                PrincipalFrame = false;
+                PrincipalDosFrame = false;
+                ResultdoFrame = true;
+                ResultadoColor = Color.Green;
+                CoinsTotales = CoinsTotales + Coins;
+            }
+            else
+            {
+                RespuestaColor = Color.Black;
+                PrincipalFrame = false;
+                PrincipalDosFrame = false;
+                LoseFrame = true;
+                Coins = 0;
+            }
+
+
+        }
 
         private void siguienteserie()
         {
