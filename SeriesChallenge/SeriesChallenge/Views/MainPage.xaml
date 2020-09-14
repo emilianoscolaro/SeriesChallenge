@@ -34,20 +34,31 @@
                 <Setter Property="CornerRadius" Value="15"/>
                 <Setter Property="HeightRequest" Value="80"/>
             </Style>
+            <Style TargetType="ImageButton" x:Key="ImageBtn">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="BorderColor" Value="White"/>
+                <Setter Property="BorderWidth" Value="4"/>
+                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="HeightRequest" Value="80"/>
+                <Setter Property="Padding" Value="10"/>
+                <Setter Property="Aspect" Value="AspectFit"/>
+            </Style>
+
+
         </ResourceDictionary>
     </ContentPage.Resources>
 
     <StackLayout  >
         <StackLayout Orientation="Vertical" Padding="40" Spacing="20" VerticalOptions="CenterAndExpand" x:Name="PrincipalMenu">
-           
-            <Button x:Name="SerieBtn" Text="series" Clicked="Series" Style="{StaticResource Key=Btnkey}"/>
+
+            <ImageButton x:Name="SerieBtn" Source="seriesbtn.png" Clicked="Series" Style="{StaticResource Key=ImageBtn}"/>
             <StackLayout x:Name="SeriesLvl" Orientation="Vertical" Spacing="10" IsVisible="False">
                 <Button Text="nivel 1" Style="{StaticResource Btnkey}" WidthRequest="200" HorizontalOptions="EndAndExpand"
                         Clicked="NivelUnoSerie" x:Name="SLvunoBtn" HeightRequest="60"/>
                 <Button Text="nivel 2" Style="{StaticResource Btnkey}" WidthRequest="200" HorizontalOptions="EndAndExpand"
                         HeightRequest="60" Clicked="NivelDosSerie" x:Name="SLvdosBtn"/>
             </StackLayout>
-            <Button Text="peliculas"  Style="{StaticResource Key=Btnkey}" x:Name="PeliculasBtn" Clicked="Peliculas"/>
+            <ImageButton x:Name="PeliculasBtn" Source="moviesbtn.png" Style="{StaticResource Key=ImageBtn}" Clicked="Peliculas"/>
             <StackLayout x:Name="Peliculaslvl" Orientation="Vertical" Spacing="10" IsVisible="False">
                 <Button Text="nivel 1" Style="{StaticResource Btnkey}" WidthRequest="200" HorizontalOptions="EndAndExpand"
                         Clicked="NivelUnoPeliculas" x:Name="PLvunoBtn" HeightRequest="60"/>
